@@ -1,0 +1,425 @@
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<div class="container bootstrap snippet">
+
+  <div class="row">
+    <div class="col-sm-3">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
+        <div class="panel-body"><a href="/userManager">Quản lý user</a></div>
+        <div class="panel-body"><a href="/home">Trở về trang chính</a></div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Social Media</div>
+        <div class="panel-body">
+          <a href="#">Trang chủ trên Facebook</a>
+        </div>
+        <div class="panel-body">
+          <a href="#">Trang chủ trên Facebook</a>
+        </div>
+        <div class="panel-body">
+          <a href="#">Trang chủ trên Twitter</a>
+        </div>
+      </div>
+
+    </div>
+    <!--/col-3-->
+    <div class="col-sm-9">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#outlet">Outlet</a></li>
+        <li><a data-toggle="tab" href="#service">Service</a></li>
+        <!-- <li><a data-toggle="tab" href="#settings">Body measurement</a></li> -->
+      </ul>
+
+
+      <div class="tab-content">
+        <div class="tab-pane active" id="outlet">
+          <ul>
+            <li *ngFor="let item of listOutlet | paginate: {id: 'outlet_page', itemsPerPage: 1, currentPage: p}">
+              <form #f="ngForm" (ngSubmit)="UpdateOutlet(f)" novalidate>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <label for="id">
+                      <h4>Mã cửa hàng</h4>
+                    </label>
+                    <input type="text" class="form-control" name="id" id="id" placeholder="id" [ngModel]="item.id"
+                      value="0" readonly>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <label for="name">
+                      <h4>Tên cửa hàng</h4>
+                    </label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Name" [ngModel]="item.name"
+                      required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <label for="address">
+                      <h4>Địa chỉ</h4>
+                    </label>
+                    <input type="text" class="form-control" name="address" id="address" placeholder="address" [ngModel]="item.address"
+                      required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <label for="phone">
+                      <h4>Số điện thoại</h4>
+                    </label>
+                    <input type="text" class="form-control" name="phone" id="phone" placeholder="phone" [ngModel]="item.phone"
+                      required>
+                  </div>
+                </div>
+
+                <!-- <div class="form-group">
+                  <div class="col-xs-12">
+                    <label for="status">
+                      <h4>Trạng thái hoạt động</h4>
+                    </label>
+                    <input type="text" class="form-control" name="status" id="status" placeholder="status" [ngModel]="item.status"
+                      required>
+                  </div>
+                </div> -->
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <label for="latitude">
+                      <h4>Latitude</h4>
+                    </label>
+                    <input type="number" class="form-control" name="latitude" id="latitude" placeholder="latitude"
+                      [ngModel]="item.latitude" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <label for="longitude">
+                      <h4>Longitude</h4>
+                    </label>
+                    <input type="number" class="form-control" name="longitude" id="longitude" placeholder="longitude"
+                      [ngModel]="item.longitude" required>
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <div class="col-xs-12" style="text-align: right;">
+                    <br>
+                    <button class="btn btn-lg btn-success" type="submit">Lưu chỉnh sửa</button>
+                    <button class="btn btn-lg btn-" type="button" (click)="showAddOutletDialog()">Thêm mới Cửa hàng</button>
+                  </div>
+                </div>
+
+              </form>
+
+            </li>
+          </ul>
+
+          <pagination-controls id="outlet_page" style="text-align: center" (pageChange)="p = $event" maxSize="5"
+            directionLinks="true" autoHide="true"></pagination-controls>
+
+        </div>
+
+        <!--/tab-pane-->
+        <div class="tab-pane" id="service">
+          <ul>
+            <li *ngFor="let item of listService | paginate: { id: 'service_page', itemsPerPage: 1, currentPage: service_p}">
+              <form #f="ngForm" (ngSubmit)="UpdateService(f)" novalidate>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <label for="id">
+                      <h4>Mã dịch vụ</h4>
+                    </label>
+                    <input type="text" class="form-control" name="id" id="id" placeholder="id" [ngModel]="item.id"
+                      readonly required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <label for="serviceName">
+                      <h4>Tên dịch vụ</h4>
+                    </label>
+                    <input type="text" class="form-control" name="serviceName" id="serviceName" placeholder="serviceName"
+                      [ngModel]="item.serviceName" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <label for="price">
+                      <h4>Giá</h4>
+                    </label>
+                    <input type="number" class="form-control" name="price" id="price" placeholder="price" [ngModel]="item.price"
+                      required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <label for="content">
+                      <h4>Mô tả</h4>
+                    </label>
+                    <input type="text" class="form-control" name="content" id="content" placeholder="content" [ngModel]="item.content"
+                      required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <label for="time">
+                      <h4>Thời gian</h4>
+                    </label>
+                    <input type="number" class="form-control" name="time" id="time" placeholder="time" [ngModel]="item.time"
+                      required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <label for="serviceTypeId">
+                      <h4>Loại dịch vụ</h4>
+                    </label>
+                    <input type="number" class="form-control" name="serviceTypeId" id="serviceTypeId" placeholder="serviceTypeId"
+                      [ngModel]="item.serviceTypeId" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <label for="imgUrl">
+                      <h4>Link ảnh</h4>
+                    </label>
+                    <input type="text" class="form-control" name="imgUrl" id="imgUrl" placeholder="imgUrl" [ngModel]="item.imgUrl"
+                      required>
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <div class="col-xs-12" style="text-align: right;">
+                    <br>
+                    <button class="btn btn-lg btn-success" type="submit">Lưu chỉnh sửa</button>
+                    <button class="btn btn-lg btn-" type="button" (click)="showAddServiceDialog()">Thêm mới Dịch vụ</button>
+                  </div>
+                </div>
+
+              </form>
+
+            </li>
+          </ul>
+
+          <pagination-controls id="service_page" style="text-align: center" (pageChange)="service_p = $event" maxSize="5"
+            directionLinks="true" autoHide="true"></pagination-controls>
+
+        </div>
+
+      </div>
+      <!--/tab-pane-->
+    </div>
+    <!--/tab-content-->
+
+  </div>
+  <!--/col-9-->
+</div>
+<!--/row-->
+
+<!-- Thêm Outlet -->
+<p-dialog #Outlet header="Tạo mới Cửa Hàng" [(visible)]="displayCreateDialog" [responsive]="true" showEffect="fade"
+  [modal]="true" [width]="450">
+  <!-- displayCreateOutletDialog -->
+  <div *ngIf="displayCreateOutletDialog">
+    <div class="ui-g ui-fluid" *ngIf="outlet">
+
+      <div class="ui-g-12">
+        <div class="ui-g-4">
+          <label for="name">Tên cửa hàng</label>
+        </div>
+        <div class="ui-g-8">
+          <input autocomplete="nope" type="text" id="name" [(ngModel)]="outletName" />
+
+        </div>
+      </div>
+
+      <div class="ui-g-12">
+        <div class="ui-g-4">
+          <label for="address">Địa chỉ</label>
+        </div>
+        <div class="ui-g-8">
+          <input autocomplete="nope" type="text" id="address" [(ngModel)]="outletAddress" />
+        </div>
+      </div>
+
+      <div class="ui-g-12">
+        <div class="ui-g-4">
+          <label for="phone">Số điện thoại</label>
+        </div>
+        <div class="ui-g-8">
+          <input autocomplete="nope" type="text" id="phone" [(ngModel)]="outletPhone" />
+        </div>
+      </div>
+
+      <!-- <div class="ui-g-12">
+      <div class="ui-g-4">
+        <label for="status">Trạng thái</label>
+      </div>
+      <div class="ui-g-8">
+        <div>
+          <p-radioButton type="number" name="status" value="1" label="Hoạt động" [(ngModel)]="selectedOutletStatus"></p-radioButton>
+        </div>
+        <div>
+          <p-radioButton type="number" name="status" value="0" label="Tạm ngưng hoạt động" [(ngModel)]="selectedOutletStatus"></p-radioButton>
+        </div>
+      </div>
+    </div> -->
+
+      <div class="ui-g-12">
+        <div class="ui-g-4">
+          <label for="latitude">Latitude</label>
+        </div>
+        <div class="ui-g-8">
+          <input autocomplete="nope" type="number" id="latitude" [(ngModel)]="outlet.latitude" />
+        </div>
+      </div>
+
+      <div class="ui-g-12">
+        <div class="ui-g-4">
+          <label for="longitude">Longitude</label>
+        </div>
+        <div class="ui-g-8">
+          <input autocomplete="nope" type="number" id="longitude" [(ngModel)]="outlet.longitude" />
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- displayCreateOutletDialog -->
+
+
+  <!-- displayCreateServiceDialog -->
+  <div *ngIf="displayCreateServiceDialog">
+
+    <div class="ui-g ui-fluid" *ngIf="serviceFull">
+
+      <div class="ui-g-12">
+        <div class="ui-g-4">
+          <label for="serviceName">Tên dịch vụ</label>
+        </div>
+        <div class="ui-g-8">
+          <input pInputText autocomplete="nope" id="serviceName" [(ngModel)]="serviceFull.serviceName" />
+
+        </div>
+      </div>
+
+      <div class="ui-g-12">
+        <div class="ui-g-4">
+          <label for="price">Giá</label>
+        </div>
+        <div class="ui-g-8">
+          <input type="number" autocomplete="nope" id="price" [(ngModel)]="serviceFull.price" />
+        </div>
+      </div>
+
+      <div class="ui-g-12">
+        <div class="ui-g-4">
+          <label for="content">Mô tả</label>
+        </div>
+        <div class="ui-g-8">
+          <input pInputText autocomplete="nope" id="content" [(ngModel)]="serviceFull.content" />
+        </div>
+      </div>
+
+      <div class="ui-g-12">
+        <div class="ui-g-4">
+          <label for="time">Thời gian</label>
+        </div>
+        <div class="ui-g-8">
+          <input type="number" autocomplete="nope" id="time" [(ngModel)]="serviceFull.time" />
+        </div>
+      </div>
+
+      <div class="ui-g-12">
+        <div class="ui-g-4">
+          <label for="imgUrl">Link hình ảnh</label>
+        </div>
+        <div class="ui-g-8">
+          <input pInputText autocomplete="nope" id="imgUrl" [(ngModel)]="serviceFull.imgUrl" />
+        </div>
+      </div>
+
+      <div class="ui-g-12">
+        <div class="ui-g-4">
+          <label for="serviceTypeId">Loại dịch vụ</label>
+        </div>
+        <div class="ui-g-8">
+          <div>
+            <p-radioButton type="number" name="serviceTypeId" value="1" label="Massage với dầu thiên nhiên" [(ngModel)]="selectedServiceTypeId"></p-radioButton>
+          </div>
+          <div>
+            <p-radioButton type="number" name="serviceTypeId" value="2" label="Liệu pháp chăm sóc sắc đẹp" [(ngModel)]="selectedServiceTypeId"></p-radioButton>
+          </div>
+          <div>
+            <p-radioButton type="number" name="serviceTypeId" value="3" label="Saunna" [(ngModel)]="selectedServiceTypeId"></p-radioButton>
+          </div>
+          <div>
+            <p-radioButton type="number" name="serviceTypeId" value="4" label="Dịch vụ khác" [(ngModel)]="selectedServiceTypeId"></p-radioButton>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- displayCreateServiceDialog -->
+
+  <p-footer>
+    <div class="ui-dialog-buttonpane ui-helper-clearfix" *ngIf="displayCreateServiceDialog">
+      <button type="button" pButton (click)="createService()" label="Tạo mới"></button>
+    </div>
+    <div class="ui-dialog-buttonpane ui-helper-clearfix" *ngIf="displayCreateOutletDialog">
+      <button type="button" pButton (click)="createOutlet()" label="Tạo mới"></button>
+    </div>
+  </p-footer>
+
+</p-dialog>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+
+
+    var readURL = function (input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('.avatar').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+
+    $(".file-upload").on('change', function () {
+      readURL(this);
+    });
+  });
+</script>

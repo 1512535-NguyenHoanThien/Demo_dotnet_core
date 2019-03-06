@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            $('#addService').click(function () {
+                console.log(123);
+            })
+        </script>
+        <div>
+            <h2 style="color:red">Choose the api you want to test"</h2>
+
+            <button id="addService">Add new service API</button>
+        </div>
+    </body>*@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+        function addService() {
+            var data = {
+                ServiceName: 'Swedish Massage',
+                Price: '115',
+                Content: 'A traditional full body treatment which uses long flowing strokes to improve circulation and relieve tension.',
+                Time: 1
+            }
+            $('#addService').click(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://localhost:5000/api/AddService',
+                    dataType: 'JSON',
+                    data: data,
+                    success: function (data) {
+                        $('#result').append(data)
+                    },
+                    error: function (data) {
+                        $('#result').append(data)
+                    }
+                })
+            })
+        }
+
+        $(document).ready(function () {
+            addService();
+        });
+
+
+
+    </script>
+
+</head>
+<body>
+    <div id="header">
+        <h2 style="color:blue">Choose the api you want to test"</h2>
+        <p id="result" style="color:red;font-weight:400"></p>
+    </div>
+    <div>
+        <button id="addService">Add new service API</button>
+    </div>
+</body>
+</html>

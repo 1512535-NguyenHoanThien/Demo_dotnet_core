@@ -1,0 +1,142 @@
+<div class="container-fuild">
+  <img src="../../assets/spa.jpg" style="width: 100%; margin-top: 57px;" />
+</div>
+
+<div id="aboutUs" style="padding-top: 40px">
+  <div class="container">
+    <div style="text-align: center; padding-left:50px; padding-right: 50px;">
+      <p style="font-size: 26px; font-weight: 700; margin: 0px">H&B SPA</p>
+      <p style="font-size: 20px; font-weight: 600">Health and Beauty</p>
+      <div class="fb-like" data-href="https://www.facebook.com/HB-274512836551678/?modal=admin_todo_tour" data-layout="standard"
+      data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+      <p>Hoạt động với phương châm "Sức khỏe và sắc đẹp". H&B có các liệu trình phong phú từ mát xa toàn thân giúp
+        giải tỏa căng thẳng và giảm nhức mỏi cơ, hay mát xa chân giúp bạn có giấc ngủ sâu, đến các liệu trình chăm
+        sóc da mặt và dưỡng thể toàn thân.</p>
+    </div>
+
+    <div class="row" style="text-align: center">
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <img class="img-responsive" src="https://lh3.googleusercontent.com/0imLuxV-JRRd1VH2IU1K_t1n8scehabNxt-cOuk0PAnUtn-SfLYzmp-eL06dPFa3wIADc0J_fotftkEnW6GIfRXWZz9lhaoMB0HSdzaRkwGr0Pv592VjsXs7Wk9e8mvlfX-aPJZR=w2400"
+            alt="Lights" style="width:100%">
+          <div class="caption">
+            <p style="font-size:18px">Massage với dầu thiên nhiên</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <img class="img-responsive" src="https://lh3.googleusercontent.com/rY7Ck1f6K4l5rupTXXt37lGtP95hPTEC4KdczgSOPMuNAjVDZI-4mJ6cpJpxcaRWg8n6Bbp1ULm0zzqzjCq9f7Yj20I-aN2FZk6Rxmof0gvCoFZZ3DU6_0n2UiwZfVoV3iVb3NYb=w2400"
+            alt="Lights" style="width:100%">
+          <div class="caption">
+            <p style="font-size:18px">Liệu pháp chăm sóc sắc đẹp</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <img class="img-responsive" src="https://lh3.googleusercontent.com/CJH-VbsdjQO-h5I0xZGdruREeexDAXVtE30XfJ5TvfQvnQyfXBxmtTB4KBrK550GSRKC84Rhg23q_8iiKwo11KaBzx-bjnhnAGwHWnkZGJcXTgn4Bmuvm7f64FjXJhsQBA_AeOhz=w2400"
+            alt="Lights" style="width:100%">
+          <div class="caption">
+            <p style="font-size:18px">Saunna</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <img class="img-responsive" src="https://lh3.googleusercontent.com/ujkCq5OQyVHoDZH6BALgf4QzeEFrqD2jsj1rXRVXh_ViDlNug2gH1V2OQYLxXxWAJrRI7t3IxcicC5LKchhk4bZkDRUJHEoFZkva4pQLdRFJMHPFsQ69nLacZ8B34aThqrln2cEQ=w2400"
+            alt="Lights" style="width:100%">
+          <div class="caption">
+            <p style="font-size:18px">Dịch vụ khác tại H&B Spa</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <a routerLink="/book" style="float:right;">Đặt lịch để tiết kiệm thời gian</a>
+  </div>
+</div>
+
+<div id="sales" style="padding-top: 40px;">
+  <div style="background-color: #f2f2f2">
+    <div style="text-align: center; padding-left:200px; padding-right: 200px;">
+      <p style="font-size: 26px; font-weight: 700; margin: 0px">H&B SPA</p>
+      <p style="font-size: 20px; font-weight: 600">Các cửa hàng trên toàn quốc</p>
+    
+    </div>
+  </div>
+</div>
+
+<div id="outlet">
+  <div class="container">
+    <div class="row" style="padding-bottom: 40px;">
+
+      <div class="col-md-4">
+        <ul>
+          <li *ngFor="let item of listOutlet | paginate: { itemsPerPage: 5, currentPage: p}">
+            <b>{{item.name}}</b><br />
+            <span>Địa Chỉ: {{item.address}}</span>
+          </li>
+        </ul>
+        <pagination-controls (pageChange)="p = $event" maxSize="3" directionLinks="true" autoHide="true"></pagination-controls>
+        <a href="/outlet" style="float:right"> Xem chi tiết</a>
+      </div>
+
+      <div class="col-md-8">
+        <!-- <agm-map [latitude]="lat" [longitude]="lng" [zoom]="11">
+          <div *ngFor="let item of listOutlet">
+            <agm-marker [latitude]="item.latitude" [longitude]="item.longitude">
+              <agm-info-window>
+                <strong>{{item.name}}</strong>
+              </agm-info-window>
+            </agm-marker>
+          </div>
+        </agm-map> -->
+        <app-googlemap [isRoute]="false"></app-googlemap>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div id='myContact'>
+  <div class="list-footer-nav">
+    <div class="container-fluid text-left">
+      <h2>Liên hệ</h2>
+      <div class="footer-nav" style="width: 500px">
+        <h4>Thông tin chung</h4>
+        <em>
+          <p type="address"><span class="glyphicon glyphicon-home"></span> Địa chỉ: <a href="https://www.google.com/maps/place/384%2F62a+l%C3%BD+Th%C3%A1i+T%E1%BB%95+T%E1%BB%95+25+Khu+ph%E1%BB%91+2,+Ph%C6%B0%E1%BB%9Dng+10,+Qu%E1%BA%ADn+10,+H%E1%BB%93+Ch%C3%AD+Minh,+Vietnam/@10.769709,106.6704833,17z/data=!3m1!4b1!4m5!3m4!1s0x31752ede3064097d:0xf162416a1d55251b!8m2!3d10.769709!4d106.672672"
+              target="_blank">384/62A, Lý Thái Tổ, Phường
+              10, Quận 10, Tp.Hồ Chí Minh</a>
+          </p>
+        </em>
+        <em>
+          <p type="phone"><span class="glyphicon glyphicon-earphone"></span> Điện thoại: <a href="tel:+84981540295"
+              target="_top">0981540295</a></p>
+        </em>
+        <em>
+          <p type="email"><span class="glyphicon glyphicon-envelope"></span> Mail: <a href="mailto:hphuy97@gmail.com"
+              target="_top">hphuy97@gmail.com</a></p>
+        </em>
+      </div>
+      <div class="footer-nav">
+        <h4>Chính sách</h4>
+        <em>
+          <p type="phone"><span class="glyphicon glyphicon-bullhorn"></span> Tuyển dụng</p>
+        </em>
+        <em>
+          <p type="phone"><span class="glyphicon glyphicon-pencil"></span> Hỗ trợ</p>
+        </em>
+      </div>
+      <div class="footer-nav">
+        <h4>Phương thức thanh toán</h4>
+        <img src="https://res.cloudinary.com/zamo-inc/image/upload/VISA.png" alt="Visa" styles="width: 100px; height: 70px; display: inline-block; paddingRight: 30px;"
+          title="Visa" />
+        <img src="https://res.cloudinary.com/zamo-inc/image/upload/cash.png" alt="Visa" styles="width: 100px; height: 70px; display: inline-block; paddingRight: 30px;"
+          title="Thanh toán trực tiếp" />
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <router-outlet></router-outlet> -->

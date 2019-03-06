@@ -1,0 +1,19 @@
+<div id="Subheader" style="width:100%;">
+    <h1 class="title"><b>Services</b></h1>
+</div>
+
+
+<div class="container">
+    <pagination-controls style="text-align: center" (pageChange)="p = $event" maxSize="5" directionLinks="true"
+        autoHide="true"></pagination-controls>
+    <div class="row">
+        <div (click)="onSelected(service)" *ngFor="let service of listServices | paginate: { itemsPerPage: 6, currentPage: p}">
+            <div class="col-sm-4">
+                <img src={{service.imgUrl}} style="width: 25vw; height:30vh; cursor: pointer;" />
+                <h6>{{service.serviceName}}</h6>
+            </div>
+        </div>
+    </div>
+    <pagination-controls style="text-align: center" (pageChange)="p = $event" maxSize="5" directionLinks="true"
+        autoHide="true"></pagination-controls>  
+</div>

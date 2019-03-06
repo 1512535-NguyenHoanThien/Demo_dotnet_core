@@ -1,0 +1,33 @@
+$main-color:#1976d2;
+
+.itemName{
+    color:$main-color;
+    font-weight: 500;
+    font-size: 1.2rem
+}
+.tille{
+    // border:1px solid $main-color;
+    font-weight: 500;
+    // font-size: 1.4rem;
+   // padding-left: 16px;
+}
+
+.bookLink{
+    color: $main-color;
+}
+
+.row{
+    padding:0px;
+    margin:0px;
+}
+
+.serviceContent{
+    border-bottom: 1px solid #e6e6e6;
+    padding:6px 6px 6px 6px;
+}
+
+.contentItem{
+    padding-top: 10px;
+ 
+}
+

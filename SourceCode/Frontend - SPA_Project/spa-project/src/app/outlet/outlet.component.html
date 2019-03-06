@@ -1,0 +1,35 @@
+<div style="padding-top:70px" class="container">
+  <h5 style="border-bottom: 1px solid black; padding-bottom: 20px;">Hệ thống H&B</h5>
+
+  <div *ngFor="let item of listOutlet | paginate: { itemsPerPage: 1, currentPage: p}">
+    <pagination-controls style="text-align: center" (pageChange)="p = $event"
+      maxSize="5" directionLinks="true" autoHide="true"></pagination-controls>
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table">
+          <tr>
+            <td><b>Mã cửa hàng</b></td>
+            <td>{{item.id}}</td>
+          </tr>
+          <tr>
+            <td><b>Tên cửa hàng</b></td>
+            <td>{{item.name}}</td>
+          </tr>
+          <tr>
+            <td><b>Địa chỉ</b></td>
+            <td>{{item.address}}</td>
+          </tr>
+          <tr>
+            <td><b>Số điện thoại</b></td>
+            <td>{{item.phone}}</td>
+          </tr>
+        </table>
+      </div>
+
+
+      <div class="col-md-6">
+        <app-googlemap [isRoute]="true" [outletLat]="item.latitude" [outletLng]="item.longitude" [outletName]="item.name"></app-googlemap>
+      </div>
+    </div>
+  </div>
+</div>

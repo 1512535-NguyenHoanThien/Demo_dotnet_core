@@ -1,0 +1,394 @@
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<div class="container bootstrap snippet">
+    <div class="row">
+        <div class="col-sm-10">
+            <h1>User name</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <!--left col-->
+
+
+            <div class="text-center">
+                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+                <h6>Upload a different photo...</h6>
+                <input type="file" class="text-center center-block file-upload">
+            </div><br>
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
+                <div class="panel-body"><a href="/book">Đặt lịch massage</a></div>
+                <div class="panel-body"><a href="/history?userId={{Id}}">Lịch sử đặt lịch</a></div>
+                <div class="panel-body"><a href="/home">Trở về trang chính</a></div>
+            </div>
+
+
+            <ul class="list-group">
+                <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
+                <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
+            </ul>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Social Media</div>
+                <div class="panel-body">
+                    <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i>
+                    <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
+                </div>
+            </div>
+
+        </div>
+        <!--/col-3-->
+        <div class="col-sm-9">
+
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#profile">Profile</a></li>
+                <li><a data-toggle="tab" href="#settings">Body measurement</a></li>
+                <li><a data-toggle="tab" href="#pass">Change Password</a></li>
+            </ul>
+
+
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="profile">
+                    <form #f="ngForm" (ngSubmit)="UpdateProfile(f)" novalidate>
+
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="FullName">
+                                    <h4>Tên</h4>
+                                </label>
+                                <input type="text" class="form-control" name="FullName" id="FullName" placeholder="FullName"
+                                    [ngModel]="FullName">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="gender">
+                                    <h4>Giới tính</h4>
+                                </label>
+                                <input type="text" class="form-control" name="gender" id="gender" placeholder="Gender"
+                                    [ngModel]="Gender">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="PhoneNumber">
+                                    <h4>Số điện thoại</h4>
+                                </label>
+                                <input type="text" class="form-control" name="PhoneNumber" id="PhoneNumber" placeholder="PhoneNumber"
+                                    [ngModel]="PhoneNumber">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="Password">
+                                    <h4>Mật khẩu</h4>
+                                </label>
+                                <input type="password" class="form-control" name="Password" id="Password" placeholder="Password"
+                                    [ngModel]="Password" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="DateOfBirth">
+                                    <h4>Ngày sinh</h4>
+                                </label>
+                                <input type="date" class="form-control" name="DateOfBirth" id="DateOfBirth" placeholder="DateOfBirth" [ngModel]="DateOfBirth | date:'yyyy-MM-dd'">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="Age">
+                                    <h4>Nghề nghiệp</h4>
+                                </label>
+                                <input type="text" class="form-control" name="Profession" id="Profession" placeholder="Profession" [ngModel]="Profession">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="IdentifyCard">
+                                    <h4>Chứng minh nhân dân</h4>
+                                </label>
+                                <input type="text" class="form-control" name="IdentifyCard" id="IdentifyCard" placeholder="IdentifyCard"
+                                    [ngModel]="IdentifyCard">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="Address">
+                                    <h4>Địa Chỉ</h4>
+                                </label>
+                                <input type="text" class="form-control" name="Address" id="Address" placeholder="Address"
+                                    [ngModel]="Address">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="Email">
+                                    <h4>Email</h4>
+                                </label>
+                                <input type="text" class="form-control" name="Email" id="Email" placeholder="Email"
+                                    [ngModel]="Email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="Role">
+                                    <h4>Chức vụ</h4>
+                                </label>
+                                <input type="text" class="form-control" name="Role" id="Role" placeholder="Role"
+                                    [ngModel]="Role">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-12" style="text-align: right;">
+                                <br>
+                                <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>
+                                    Lưu</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+                <div role="tabpanel" class="tab-pane" id="pass">
+                    <form #f2="ngForm" (ngSubmit)="ChangePassword(f2)" novalidate>
+
+                        <div class="form-group">
+                            <div class="col-xs-4 col-xs-offset-4">
+                                <label for="curPass">
+                                    <h4>Mật khẩu hiện tại</h4>
+                                </label>
+                                <input type="password" class="form-control" name="curPass" id="curPass" placeholder="Current password"
+                                    ngModel required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-4 col-xs-offset-4">
+                                <label for="newPass">
+                                    <h4>Mật khẩu mới</h4>
+                                </label>
+                                <input type="password" class="form-control" name="newPass" id="newPass" placeholder="New Password"
+                                    ngModel required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-4 col-xs-offset-4">
+                                <label for="confirm">
+                                    <h4>Nhập lại mật khẩu mới</h4>
+                                </label>
+                                <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm new Password"
+                                    ngModel required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-4 col-xs-offset-4" style="text-align: right;">
+                                <br>
+                                <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>
+                                    Lưu</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <!--/tab-pane-->
+                <div class="tab-pane" id="settings">
+                    <form class="form" action="##" method="post" id="registrationForm">
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="Height">
+                                    <h4>Height</h4>
+                                </label>
+                                <input type="text" class="form-control" name="Height" id="Height" placeholder="Height">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="Weight">
+                                    <h4>Weight</h4>
+                                </label>
+                                <input type="text" class="form-control" name="Weight" id="Weight" placeholder="Weight">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="BMI">
+                                    <h4>BMI</h4>
+                                </label>
+                                <input type="text" class="form-control" name="BMI" id="BMI" placeholder="BMI">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="Body_Mass">
+                                    <h4>Body Mass</h4>
+                                </label>
+                                <input type="text" class="form-control" name="Body_Mass" id="Body_Mass" placeholder="Body_Mass">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="Fat_content">
+                                    <h4>Fat content</h4>
+                                </label>
+                                <input type="text" class="form-control" name="Fat_content" id="Fat_content" placeholder="Fat_content">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for=" Muscle_content">
+                                    <h4>Muscle content</h4>
+                                </label>
+                                <input type="text" class="form-control" name="Muscle_content" id="Muscle_content"
+                                    placeholder="Muscle_content">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="Skeletal">
+                                    <h4>Skeletal</h4>
+                                </label>
+                                <input type="text" class="form-control" name="Skeletal" id="Skeletal" placeholder="Skeletal">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="Muscle_Ratio">
+                                    <h4>Muscle Ratio</h4>
+                                </label>
+                                <input type="text" class="form-control" name="Muscle_Ratio" id="Muscle_Ratio"
+                                    placeholder="Muscle_Ratio">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="Basal_metabolism_rate">
+                                    <h4>Basal metabolism rate</h4>
+                                </label>
+                                <input type="text" class="form-control" name="Basal_metabolism_rate" id="Basal_metabolism_rate"
+                                    placeholder="Basal_metabolism_rate">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="Visceral_Fat">
+                                    <h4>Visceral Fat</h4>
+                                </label>
+                                <input type="text" class="form-control" name="Visceral_Fat" id="Visceral_Fat"
+                                    placeholder="Visceral_Fat">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for=" Body_Age">
+                                    <h4> Body Age</h4>
+                                </label>
+                                <input type="text" class="form-control" name="Body_Age" id="Body_Age" placeholder="Body_Age">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="Temp_top">
+                                    <h4>Temp (top)</h4>
+                                </label>
+                                <input type="text" class="form-control" name="Temp_top" id="Temp_top" placeholder="Temp_top">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="Temp_bottom">
+                                    <h4>Temp (bottom)</h4>
+                                </label>
+                                <input type="text" class="form-control" name="Temp_bottom" id="Temp_bottom" placeholder="Temp_bottom">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="Temp_bed">
+                                    <h4>Temp (bed)</h4>
+                                </label>
+                                <input type="text" class="form-control" name="Temp_bed" id="Temp_bed" placeholder="Temp_bed">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <!--/tab-pane-->
+        </div>
+        <!--/tab-content-->
+
+    </div>
+    <!--/col-9-->
+</div>
+<!--/row-->
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var readURL = function (input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.avatar').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $(".file-upload").on('change', function () {
+            readURL(this);
+        });
+    });
+</script>
+

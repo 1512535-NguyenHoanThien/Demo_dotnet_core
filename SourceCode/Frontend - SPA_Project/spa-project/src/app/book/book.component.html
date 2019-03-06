@@ -1,0 +1,130 @@
+<div style="padding-top: 70px;margin-right: 8px;" class="container-fuild">
+  <div class="row" style="margin:0px 0px 0px 0px">
+
+    <div class="col-md-9">
+      <p class="tille">Các dịch vụ tại H&B</p>
+      <div *ngFor="let item of listservices | paginate: { itemsPerPage: 6, currentPage: p}">
+        <div style="margin:10px 0px 10px 0px; background-color: #ffffff" class="row">
+          <div class="col-sm-2">
+            <img src={{item.imgUrl}} width="96px" height="96px" />
+            <span class=" d-sm-block d-md-none" style="margin-left: 30px">
+                <button class="btn btn-danger btn-sm" (click)="removeCart(item)">-</button>
+                <button class="btn btn-outline-dark btn-sm" style="width:60px; margin: 0px 4px 0px 4px" disabled>{{item.quantity}}</button>
+                <button class="btn btn-success btn-sm" (click)="addCart(item)">+</button>
+            </span>
+          </div>
+         
+          <div class="col-sm-8" style="padding-top:10px">
+            <span class="itemName">{{item.serviceName}}</span><br />
+            <i>{{item.content}}</i><br />
+            Thời gian: {{item.time}} phút -
+            Giá tiền: {{item.price}}.000VNĐ
+          </div>
+          <div class="col-sm-2 d-none d-md-block" style="padding-top:40px">
+              <button class="btn btn-danger btn-sm" (click)="removeCart(item)">-</button>
+              <button class="btn btn-outline-dark btn-sm" style="width:60px; margin: 0px 4px 0px 4px" disabled>{{item.quantity}}</button>
+              <button class="btn btn-success btn-sm" (click)="addCart(item)">+</button>
+          </div>
+        </div>
+      </div>
+      <pagination-controls style="text-align: center" (pageChange)="p = $event" maxSize="5" directionLinks="true"
+        autoHide="true"></pagination-controls>
+    </div>
+
+    <div class="col-md-3">
+      <p class="tille">Lịch hẹn của quý khách</p>
+      <div style="background-color: #ffffff; padding: 8px 16px 8px 16px">
+        <p class="tille">Thông tin khách hàng:</p>
+        <div style="padding-bottom: 20px">
+          <div style="padding-bottom: 10px">
+            <img src="../../assets/user.svg" height="24px" width="24px" />
+            <span style="padding-left: 16px">{{FullName}}</span>
+          </div>
+          <div class="">
+            <img src="../../assets/phone-receiver.svg" height="24px" width="24px" />
+            <span style="padding-left: 16px">{{PhoneNumber}}</span>
+          </div>
+        </div>
+        <!-- <span class="tille">Các dịch vụ đã chọn: </span>
+        <a style="margin-right: 20px;padding-top: 4px;" href="#" data-toggle="modal" data-target="#appointmentDetail">
+          Xem chi tiết
+        </a> -->
+
+        <!-- <div class="modal fade" id="appointmentDetail">
+          <div class="modal-dialog  modal-lg">
+            <div class="modal-content" style="height: 400px;">
+
+              <p *ngIf="sumofprice == 0" class="tille" style="text-align: center;padding:200px 0px 200px 0px">Bạn chưa
+                chọn dịch vụ nào</p>
+
+              <div *ngIf="sumofprice > 0" class="row" style="border-bottom: 1px solid #e6e6e6">
+                <div class="col-sm-1">
+                  <p class="tille">STT</p>
+                </div>
+
+                <div class="col-sm-7">
+                  <p class="tille">Tên dịch vụ</p>
+
+                </div>
+
+                <div class="col-sm-2">
+                  <p class="tille">Giá dịch vụ</p>
+                </div>
+                <div class="col-sm-2">
+                  <p class="tille">Hủy bỏ</p>
+                </div>
+              </div>
+
+              <div *ngFor="let item of carts; index as i" class="row serviceContent">
+                <div class="col-sm-1 contentItem">
+                  {{i+1}}
+                </div>
+
+                <div class="col-sm-7">
+                  <b>{{item.serviceName}}</b><br />
+                  Thời gian: {{item.time}} phút
+                </div>
+
+                <div class="col-sm-2 contentItem">
+                  {{item.price}}.000 đ
+                </div>
+                <div class="col-sm-2 contentItem">
+                  <img (click)="removeCart(i,item.price)" src="../../assets/multiply.svg" width="24px" height="24px" />
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <div class="form-group" style="padding-top:10px">
+          <input type="text" class="form-control" id="code" placeholder="Nhập mã giảm giá" />
+        </div> -->
+        <div class="form-group">
+            <label>Chọn chi nhánh</label>
+          <select class="form-control" (change)="setOutlet($event.target.value)">
+            <option value={{item.id}} *ngFor="let item of outlets">{{item.name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Chọn huấn luyện viên</label>
+          <select class="form-control" (change)="setTherapit($event.target.value)">
+            <option value={{item.id}} *ngFor="let item of therapits">{{item.name}}</option>
+          </select>
+        </div>
+
+        <div style="padding-bottom: 10px">
+          <span class="tille">Tạm tính: {{bookingModel.TotalPrice}}.000 đ</span>
+        </div>
+        <div style="padding-bottom: 10px">
+            <span class="tille">Thời gian: {{bookingModel.TotalTime}} phút</span>
+          </div>
+        <dl-date-time-picker startView="day" maxView="year" minView="minute" minuteStep="30" [(ngModel)]="bookingModel.DateTimeBooked">
+        </dl-date-time-picker>
+
+        <button type="button" (click)="booking()" class="btn btn-primary btn-block">Đặt lịch</button>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<div style="padding-top: 100px; background: white">
+  <!-- <pagination-controls style="text-align: center" (pageChange)="p = $event" maxSize="5" directionLinks="true" autoHide="true"></pagination-controls> -->
+
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Ngày Đặt</th>
+        <th scope="col">Tổng thời gian</th>
+        <th scope="col">Tổng tiền</th>
+        <th scope="col">Chi nhánh</th>
+        <th scope="col">Huấn luyện viên</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of histories" (click)="getDetail(item)" data-toggle="modal" data-target="#detail">
+        <th scope="row">{{item.dateBooked | date:'medium'}}</th>
+        <th scope="row">{{item.totalTime}} phút</th>
+        <th scope="row">{{item.totalPrice}}.000 VNĐ</th>
+        <th scope="row">{{item.outletName}}</th>
+        <th scope="row">{{item.therapistName}}</th>
+      </tr>
+  </table>
+
+  <div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Chi tiết lịch hẹn</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Dịch vụ</th>
+                <th scope="col">Bắt đầu</th>
+                <th scope="col">Kết thúc</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of details">
+                <th scope="row">{{item.order}}</th>
+                <th scope="row">{{item.serviceName}}</th>
+                <th scope="row">{{item.startTime | date:'shortTime'}}</th>
+                <th scope="row">{{item.finishTime | date:'shortTime'}}</th>
+              </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
